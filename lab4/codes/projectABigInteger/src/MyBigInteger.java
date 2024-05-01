@@ -130,29 +130,119 @@ public class MyBigInteger {
     }
 
 
-    public String subtract(MyBigInteger s){
-        if(this.SIZE!=0&&s.SIZE==0){
+    public String subtract(MyBigInteger s) {
+        String sign = "+";
+        int tmp[] = new int[this.SIZE + s.SIZE];
+        int actualSize = 0;
+        if (this.SIZE != 0 && s.SIZE == 0) {
             return this.toString();
-        }else if(this.SIZE==0&&s.SIZE!=0)
+        } else if (this.SIZE == 0 && s.SIZE != 0)
             return s.toString();
-        else
-        {
+        else {
             int carry = 0;
-            if(this.SIZE==s.SIZE||this.SIZE>s.SIZE){
+            if (this.SIZE >= s.SIZE) {
                 int i;
-                for(i = 0;i<this.SIZE&&i<s.SIZE){
+                for (i = 0; i < this.SIZE && i < s.SIZE; i++) {
+                    int a = this.arr[i] - carry;
+                    int b = s.arr[i];
+                    if (bigSmallEqual(a, b) == 1) {
+                        tmp[actualSize++] = a - b;
+                        carry = 0;
+                    } else if (bigSmallEqual(a, b) == -1) {
+                        if (i < s.SIZE - 1) {
+                            a += 10;  //需要从下一个数借1
+                            carry = 1; //下次运算要减去carry
+                            tmp[actualSize++] = a - b;
+                        } else {
+                            sign = "-";
+                            tmp[actualSize++] = b - a;
+                        }
+                    } else {
+                        carry = 0;
+                        tmp[actualSize++] = 0;
+                    }
 
                 }
+            } else if (this.SIZE - 1 < s.SIZE - 1) {
+                sign = "-";
 
+                int len = s.SIZE-this.SIZE;
 
+                int []tp = new int[s.SIZE];
+                int k;
+                for(k = 0;k<len;k++){
+                    tp[k] = 0;
+                }
+                for(int t = this.SIZE-1;t>=0;t--){
+                    tp[k++] = this.arr[t];
+                }
 
+                reverseArr(tp);
+
+                int i;
+                for (i = 0; i < tp.length && i < s.SIZE; i++) {
+                    int b  = tp[i];
+                    int a = s.arr[i] - carry;
+                    if (bigSmallEqual(a, b) == 1) {
+                        tmp[actualSize++] = a - b;
+                        carry = 0;
+                    } else if (bigSmallEqual(a, b) == -1) {
+                        if (i < this.SIZE - 1) {
+                            a += 10;  //需要从下一个数借1
+                            carry = 1; //下次运算要减去carry
+                            tmp[actualSize++] = a - b;
+                        } else {
+                            sign = "-";
+                            tmp[actualSize++] = b - a;
+                        }
+                    } else {
+                        tmp[actualSize++] = 0;
+                        carry = 0; //当两个都相等那么减法后是0不需要存储到数组
+                    }
+
+                }
             }
-            else if(this.SIZE<s.SIZE){
 
+            String n = "";
+            if (sign.charAt(0) == '-') //如果符号是-那么给他负数
+                n += '-';
+
+            int flag = 1;
+            for (int i = actualSize - 1; i >= 0; i--) { //把开头的0去掉
+                if(tmp[i]==0&&flag!=0){
+                    while(tmp[i]==0)
+                        i--;
+                    flag=0;
+                }
+                n = n + "" + tmp[i];
             }
+
+            return n;
         }
-        return null;
     }
+
+    private void reverseArr(int[] tp) {
+        int left = 0;
+        int right = tp.length-1;
+
+        while(left<right){
+            int tmp = tp[right];
+            tp[right] = tp[left];
+            tp[left] = tmp;
+            right--;
+            left++;
+        }
+    }
+
+    private int bigSmallEqual(int i, int i1) {
+           if(i>i1)
+               return 1;
+           else if(i<i1)
+               return -1;
+           return 0;
+    }
+
+
     @Override
     public String toString(){
         String n = "";
