@@ -94,8 +94,6 @@ public class ComplexCart {
         double x = this.getReal();
         double y = this.getImaginary();
 
-
-
         if(this.magnitude()==0.0)
             throw new IllegalArgumentException("cant divide by 0");
         double recip = this.conjugate()/(this.magnitude()*this.magnitude());
@@ -164,10 +162,8 @@ public class ComplexCart {
             x1 = (-b-Math.sqrt(disc))/(2*a);
             x2 = (-b+Math.sqrt(disc))/(2*a);
         }
-
         return "Two Roots\n"+"X1 = "+x1+"\n"+"X2: = "+x2;
     }
-
 
 
     @Override
