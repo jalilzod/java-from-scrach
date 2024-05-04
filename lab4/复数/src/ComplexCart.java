@@ -111,6 +111,63 @@ public class ComplexCart {
     }
 
 
+    public double arctangent(){
+        return Math.round(Math.atan2(getImaginary(),getReal()));
+    }
+
+    public String toPolar(){
+        char thetaSign = '\u2220'; //表示theta符号
+        return magnitude()+""+thetaSign+""+Math.toDegrees(arctangent())+"deg";
+    }
+
+
+    private double eulerReal(){
+        return Math.cos(arctangent());
+    }
+    private double eulerImaginary(){
+        return Math.sin(arctangent());
+    }
+
+    private double computeExponential(){
+        return Math.pow(Math.E,eulerReal()+eulerImaginary());
+    }
+    public double exp(){
+        return Math.pow(Math.E,(magnitude()*computeExponential()));
+    }
+
+    public double log(){
+        return Math.log(exp());
+    }
+
+    public double pow(double a){
+        return Math.pow(exp(),a);
+    }
+
+    public String computeQuadratic(double a,double b,double c){
+        double disc = (b*b)-(4*a*c);
+        double x1,x2;
+        if(disc<0)
+            return "No Roots";
+        else if(disc==0){
+            if(a==0.0)
+                throw new IllegalArgumentException("Divide by zer");
+            else
+            {
+                x1 = (-b)/(2*a);
+                return "One root: x="+x1;
+            }
+
+        }else
+        {
+            if(a==0.0)
+                throw new IllegalArgumentException("Divide by zer");
+            x1 = (-b-Math.sqrt(disc))/(2*a);
+            x2 = (-b+Math.sqrt(disc))/(2*a);
+        }
+
+        return "Two Roots\n"+"X1 = "+x1+"\n"+"X2: = "+x2;
+    }
+
 
 
     @Override
