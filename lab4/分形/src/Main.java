@@ -1,16 +1,19 @@
+import static java.lang.System.exit;
+
 public class Main {
-    public static void main(String[]args){
-        double x1 = 250,y1 = 250;
-        Turtle tr = new Turtle(x1,y1,0);
-        Turtle tr2 = new Turtle(450,250,90);
-        Turtle tr3 = new Turtle(250,250,90);
-        //Turtle tr3 = new Turtle(x1,y1,0);
+    public static void main(String[]args) throws InterruptedException {
 
-        //Turtle tr1 = new Turtle(x1+(200.0/2),74,60);
+//         Rectangle tr = new Rectangle(400,50,45);
+//         Thread.sleep(5000);
+//         Prizma pr = new Prizma(250,300,0);
+//         Thread.sleep(5000);
+//         Hexagon hx = new Hexagon(200,100,90);
+//         Thread.sleep(5000);
 
-        tr.goForwardStep(200);
-        tr2.goForwardStep(200);
-        tr3.goForwardStep(200);
-        //tr1.goForwardStep(200);
+            Spiral s = new Spiral(3,10,1.1);
+
+
+         exit(1);
+
     }
 }

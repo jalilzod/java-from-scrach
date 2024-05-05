@@ -14,6 +14,10 @@ public class Turtle {
         setUp();
     }
 
+    public Turtle(){
+
+    }
+
     private double angleRad(){
         return Math.toRadians(this.angle);
     }
@@ -24,11 +28,15 @@ public class Turtle {
 
         StdDraw.line(this.x,this.y,x1,y1);
     }
-    public void setUp(){
+
+    public void setColor(int r,int g,int b){
+        StdDraw.setPenColor(r,g,b);
+    }
+    private void setUp(){
         StdDraw.setCanvasSize(740,400);
         StdDraw.setXscale(0,740);
         StdDraw.setYscale(0,400);
-        StdDraw.setPenColor(StdDraw.BLACK);
+       // StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.setPenRadius(0.005);
 
     }
