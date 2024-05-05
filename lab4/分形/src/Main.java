@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import static java.lang.System.exit;
 
 public class Main {
@@ -10,10 +12,11 @@ public class Main {
 //         Hexagon hx = new Hexagon(200,100,90);
 //         Thread.sleep(5000);
 
-            Spiral s = new Spiral(3,10,1.1);
+         // Spiral s = new Spiral(3,10,1.1);
+           // Thread.sleep(112000);
+//
+      Brownian s = new Brownian(10,0.5);
 
-
-         exit(1);
 
     }
 }

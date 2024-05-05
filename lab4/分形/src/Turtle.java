@@ -18,7 +18,7 @@ public class Turtle {
 
     }
 
-    private double angleRad(){
+    public double angleRad(){
         return Math.toRadians(this.angle);
     }
 
@@ -27,6 +27,23 @@ public class Turtle {
         double y1 = this.y+(step*Math.sin(angleRad()));
 
         StdDraw.line(this.x,this.y,x1,y1);
+    }
+    public void goForwardStep(double step,double x1,double y1){
+        x1 = this.x+(step*Math.cos(angleRad()));
+        y1 = this.y+(step*Math.sin(angleRad()));
+
+        StdDraw.line(this.x,this.y,x1,y1);
+    }
+    public void setAngle(double n){
+        this.angle = n;
+    }
+
+    public void setY(double y){
+        this.y = y;
+    }
+
+    public void setX(double x){
+        this.x = x;
     }
 
     public void setColor(int r,int g,int b){

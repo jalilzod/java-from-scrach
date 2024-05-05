@@ -22,10 +22,8 @@ public class ComplexCart {
 
         double u = b.getReal();
         double z = b.getImaginary();
-
         x+=u;
         y+=z;
-
         return "a = " + x+"+"+y+"i";
     }
 
@@ -154,7 +152,6 @@ public class ComplexCart {
                 x1 = (-b)/(2*a);
                 return "One root: x="+x1;
             }
-
         }else
         {
             if(a==0.0)
