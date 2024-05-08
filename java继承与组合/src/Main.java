@@ -1,5 +1,5 @@
 public class Main {
-    public void main(String[]args){
+    public static void main(String[]args){
 
         Name name1 = new Name("Sina","Sheibani");
         Name name2 = new Name("Kiyomiddin","Jalilzod");
