@@ -1,11 +1,17 @@
 package com.ming;
 
+import com.sun.tools.javac.Main;
+
 public class FromPackage  {
+
     private int age;
-    public String name;
+    protected String name;
 
 
     public void setAge(int age){
+
+
         this.age = age;
     }
+
 }
