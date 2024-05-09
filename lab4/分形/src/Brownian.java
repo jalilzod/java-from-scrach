@@ -1,9 +1,9 @@
 import java.util.Random;
 
-public class Brownian extends Turtle{
+public class Brownian {
     private  double T;
     private double S;
-
+    private double steps = 50;
 
     public Brownian(double T,double S){
         this.S = S;
@@ -12,28 +12,26 @@ public class Brownian extends Turtle{
     }
 
     private void drawShape() {
-        double angle = 0;
-        double x1 = 100;
-        double y1 = 100;
-        double o = 0;
-        double ran = (Math.random()*(360-0+1)-0);
-        Turtle y = new Turtle(x1, y1, ran);
-        int j = 0;
-        int cnt = 0;
-        for (int i = 0; i < 1000; i++) {
-                y.goForwardStep(i);
-                cnt++;
-             if(cnt==20){
-//                 double ang = Math.toRadians(ran);
-//                 double x2 =  x1+cnt*Math.cos(ang);
-//                 double y2 =  x2+cnt*Math.sin(ang);
-                  ran = (Math.random()*(360-0+1)-0);
-                 y.setX(o+=cnt);
-                 y.setY(o+=cnt);
-                 y.setAngle(ran);
-                 cnt = 0;
-            }
-        }
+        double  x1= 400,y1 = 10;
+        double angle = 45;
+        double radians = Math.toRadians(angle);
+       Turtle turtle = new Turtle(x1,y1,angle);
+
+       double cnt = 0;
+       double randomAngle = Math.random()*360;
+       for(double i = 0;i<1000;i+=0.5){
+           if(cnt==1){
+               randomAngle = Math.random()*360;
+               turtle.setAngle(randomAngle);
+               turtle.goForwardStep(steps);
+               cnt = 0;
+           }
+           cnt+=i;
+           turtle.goForwardStep(i);
+       }
+
+        //turtle.goForwardStep(steps,0, turtle.getX1(), turtle.getY1());
+
     }
 }
 
