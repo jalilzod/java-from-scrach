@@ -20,12 +20,21 @@ public class Resistance extends Circuit{
     @Override
     public double resistance() {
         double num1=  0,num2 = 0,sum = 0;
+        double tmp = 0;
         for(int i = 0;i<expression.length();i++){
             int n = expression.charAt(i);
             if(isOpenBracket(n))
                 pushSign(expression.charAt(i+1));
-            if(isNumber(n))
-                pushNumber(n-'0');
+            if(isNumber(n)){
+                if(i!=expression.length()-1&&expression.charAt(i+1)=='.'){
+                    tmp = expression.charAt(i+2);
+                    tmp*=0.1;
+                }
+                n-='0';
+                tmp+=n;
+                pushNumber(tmp);
+                tmp = 0;
+            }
             if(isCloseBracket(n)){
                 if(signsTop!=-1&&numbersTop>=1) {
                     int sig = popSign();
@@ -63,7 +72,7 @@ public class Resistance extends Circuit{
         return -1;
     }
     private double popNumber(){
-        if(!isSignEmpty())
+        if(!isNumberEmpty())
             return numbers[numbersTop--];
         return -1;
     }
@@ -103,8 +112,5 @@ public class Resistance extends Circuit{
     private boolean isNumber(int n){
         return n>=48&&n<=57;
     }
-
-
-
 
 }
