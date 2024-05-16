@@ -19,7 +19,7 @@ public class Resistance extends Circuit{
     }
     @Override
     public double resistance() {
-        double num1=  0,num2 = 0,sum = 0;
+        double num1=  0,num2 = 0,sum = 0,r = 0;
         double tmp = 0;
         for(int i = 0;i<expression.length();i++){
             int n = expression.charAt(i);
@@ -47,7 +47,8 @@ public class Resistance extends Circuit{
                     else{
                         num1 = popNumber();
                         num2 = popNumber();
-                        sum = (1.0/((1/num1) + (1/num2)));
+                        r = (1.0/num1) + (1.0/num2);
+                        sum = 1.0/r;
                         pushNumber(sum);
                     }
                 }
