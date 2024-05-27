@@ -21,19 +21,28 @@ public class Turtle {
     public double angleRad(){
         return Math.toRadians(this.angle);
     }
+    public double angleRad(double prevAngle){
+        return Math.toRadians(prevAngle);
+    }
 
     public void goForwardStep(double step){
         double x1 = this.x+(step*Math.cos(angleRad()));
         double y1 = this.y+(step*Math.sin(angleRad()));
 
         StdDraw.line(this.x,this.y,x1,y1);
+        this.x = x1;
+        this.y = y1;
     }
-    public void goForwardStep(double step,double x1,double y1){
-        x1 = this.x+(step*Math.cos(angleRad()));
-        y1 = this.y+(step*Math.sin(angleRad()));
 
-        StdDraw.line(this.x,this.y,x1,y1);
+
+
+    public double getX1(){
+        return this.x;
     }
+    public double getY1(){
+        return this.y;
+    }
+
     public void setAngle(double n){
         this.angle = n;
     }

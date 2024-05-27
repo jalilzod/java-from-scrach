@@ -5,11 +5,11 @@ public class Main {
 
 
         Class7 my = new Class7(1);
-        FromPackage m = new FromPackage();
         String name = "Hey";
 
+        String num = "345";
+        num = "343";
 
-        System.out.println();
 
     }
 }

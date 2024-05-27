@@ -1,47 +1,45 @@
 import javax.swing.*;
 
-public class Spiral extends Turtle{
-    private int N;
-    private int T;
-    private double D;
-    private double pixels;
-    public Spiral(int N, int T, double D){
-        this.N = N;
-        this.T = T;
-        this.D = D;
-        drawShape();
-    }
+public class Spiral{
+   public double steps = 200;
+
     public Spiral(){
+
+        drawShape();
     }
 
     private void drawShape(){
-        for(int i = 0;i<T;i++){
+        double angle = 45;
+        Turtle turtle = new Turtle(300,50,angle);
+//        for(int i = 0;i<450;i++){
+//            turtle.goForwardStep(i);
+//            if(i==150)
+//                turtle.setAngle(0);
+//
+//        }
+        double upDeg = 45;
+        double horiz = 180;
+        double down = 90+45+180;
+        turtle.goForwardStep(steps);
 
-            Turtle s = new Turtle(100,200,0);
-            for(int j = 1;j<450;j++){
-                s.goForwardStep(j);
-                if(j==150){
-                    s.setAngle(-120);
-                    s.setX(250);
-                    while(j<=300){
-                        j++;
-                        s.goForwardStep(j);
-                    }
-                }
-                if(j>300){
-                    s.setX(175);
-                    s.setAngle(120);
-                    s.setY(73);
-                    while(j<450){
-                        j++;
-                        s.goForwardStep(j);
-                    }
-                }
+        for(int i = 1;i<10;i++){
+        turtle.setAngle(180);
+        turtle.goForwardStep(steps);
+        turtle.setAngle(down);
+        turtle.goForwardStep(steps-i*70);
+        turtle.setAngle(upDeg);
+        turtle.goForwardStep(steps-1*80);
 
-            }
-            break;
+        //steps-=50;
         }
+//        turtle.setAngle(45);
+//        turtle.goForwardStep(130);
+//        turtle.setAngle(180);
+//        turtle.goForwardStep(130);
+//        turtle.setAngle(305);
+//        turtle.goForwardStep(80);
 
     }
+
 
 }
