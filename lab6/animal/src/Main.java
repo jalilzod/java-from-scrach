@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[]args){
-        Animal hen = new Hen("Hen","cheep");
-        Animal cow = new Cow("cow","moo");
+        Animal hen = new Hen("Hen","cheep","fetching eggs....");
+        Animal cow = new Cow("cow","moo","fetching milk....");
         Animal pig = new Pig("Pig","oink");
 
         Farm farm = new Farm();
@@ -9,6 +9,12 @@ public class Main {
         farm.addAnimal(cow);
         farm.addAnimal(pig);
 
+        farm.produce();
         farm.animalSound();
+
+
+
+
+
     }
 }
